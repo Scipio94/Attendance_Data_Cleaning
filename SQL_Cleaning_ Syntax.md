@@ -4,14 +4,16 @@ Original Data Set
 
 
 - *There are duplicates in the 'Absence_Type' column, there are two absence types for the same day*
-- *All column in the dataset isn't relevenat to calculating attendance*
+- *All columns in the dataset aren't relevenat to calculating attendance*
 
 ## Step 1: Create a query to return all relevant columns for attendance calculation.
 ~~~SQL
 /* Data Cleanining and table creation with month, excused/unexcused absences*/
 SELECT employee_id, date, MONTH(date) AS Month,department_name, absence_type, 
 	/*Count of Excused, Unexcused, and Absences based on IF THEN Formula*/
-	COUNT(CASE WHEN Absence_Type IN ('Holiday','Personal','Vacation','Personal_(Longevity)', 'Professional_Development', 'Administrative_Leave','Bereavement', 'Religious_Observation', 'Sick', 'Covid_Sick') THEN 'Excused' END) AS Excused,
+	COUNT(CASE WHEN Absence_Type IN ('Holiday','Personal','Vacation','Personal_(Longevity)', 
+	'Professional_Development', 'Administrative_Leave','Bereavement', 'Religious_Observation', 'Sick', 'Covid_Sick') 
+	THEN 'Excused' END) AS Excused,
 	COUNT (CASE WHEN Absence_Type = 'Unpaid_Time' THEN 'Unexcused' END) AS Unexcused,
 	COUNT (CASE WHEN Absence_Type = 'Absent' THEN 'Absence' END) AS Absence,
 
@@ -35,8 +37,8 @@ GROUP BY Employee_id, date,department_name, absence_type, hours
 
 - *Duplicate absences have been removed, only legitimate absences remain*
 - *Absence categories, 'Excused' and 'Unexcused', have been added*
-- *All the columns present are relevant to the calculation of attendance*
-- *Insertion of 'School Days' column which will become the denominator in the calculation of school attendance percentage*
+- *All the columns present are relevant to the calculation of attendance percentage*
+- *Insertion of 'School Days' column, the number of school days in the month*
 
 
 
@@ -50,7 +52,9 @@ FROM (
 
 SELECT employee_id, date, MONTH(date) AS Month,department_name, absence_type, 
 	/*Count of Excused, Unexcused, and Absences based on IF THEN Formula*/
-	COUNT(CASE WHEN Absence_Type IN ('Holiday','Personal','Vacation','Personal_(Longevity)', 'Professional_Development', 'Administrative_Leave','Bereavement', 'Religious_Observation', 'Sick', 'Covid_Sick') THEN 'Excused' END) AS Excused,
+	COUNT(CASE WHEN Absence_Type IN ('Holiday','Personal','Vacation','Personal_(Longevity)', 
+	'Professional_Development', 'Administrative_Leave','Bereavement', 'Religious_Observation', 'Sick', 'Covid_Sick') 
+	THEN 'Excused' END) AS Excused,
 	COUNT (CASE WHEN Absence_Type = 'Unpaid_Time' THEN 'Unexcused' END) AS Unexcused,
 	COUNT (CASE WHEN Absence_Type = 'Absent' THEN 'Absence' END) AS Absence,
 
@@ -73,7 +77,7 @@ GROUP BY s.employee_id, s.date,s.month,s.department_name, s.absence, s.excused, 
 
 ![Data_Cleaning_TrueAbsence](https://user-images.githubusercontent.com/112409778/208683686-1c207193-cdad-47de-98a1-7c3705916efc.png)
 
-- *Creation of a 'true_absence' column, the difference between the sum of 'excused' & 'absence' from 'unexcused'*
+- *Creation of a 'true_absence' column, the difference between the sum of 'excused' & 'absence' minus 'unexcused'*
 - *Negative results in the 'true_absence' column is indicative 'excused' absences and will not negatively impact their attendance percentage*
 
 ## Step 3: Create a CTE 
@@ -87,7 +91,9 @@ FROM (
 
 SELECT employee_id, date, MONTH(date) AS Month,department_name, absence_type, 
 	/*Count of Excused, Unexcused, and Absences based on IF THEN Formula*/
-	COUNT(CASE WHEN Absence_Type IN ('Holiday','Personal','Vacation','Personal_(Longevity)', 'Professional_Development', 'Administrative_Leave','Bereavement', 'Religious_Observation', 'Sick', 'Covid_Sick') THEN 'Excused' END) AS Excused,
+	COUNT(CASE WHEN Absence_Type IN ('Holiday','Personal','Vacation','Personal_(Longevity)', 
+	'Professional_Development', 'Administrative_Leave','Bereavement', 'Religious_Observation', 'Sick', 'Covid_Sick') 
+	THEN 'Excused' END) AS Excused,
 	COUNT (CASE WHEN Absence_Type = 'Unpaid_Time' THEN 'Unexcused' END) AS Unexcused,
 	COUNT (CASE WHEN Absence_Type = 'Absent' THEN 'Absence' END) AS Absence,
 
@@ -119,7 +125,9 @@ FROM (
 
 SELECT employee_id, date, MONTH(date) AS Month,department_name, absence_type, 
 	/*Count of Excused, Unexcused, and Absences based on IF THEN Formula*/
-	COUNT(CASE WHEN Absence_Type IN ('Holiday','Personal','Vacation','Personal_(Longevity)', 'Professional_Development', 'Administrative_Leave','Bereavement', 'Religious_Observation', 'Sick', 'Covid_Sick') THEN 'Excused' END) AS Excused,
+	COUNT(CASE WHEN Absence_Type IN ('Holiday','Personal','Vacation','Personal_(Longevity)', 
+	'Professional_Development', 'Administrative_Leave','Bereavement', 'Religious_Observation', 'Sick', 'Covid_Sick') 
+	THEN 'Excused' END) AS Excused,
 	COUNT (CASE WHEN Absence_Type = 'Unpaid_Time' THEN 'Unexcused' END) AS Unexcused,
 	COUNT (CASE WHEN Absence_Type = 'Absent' THEN 'Absence' END) AS Absence,
 
