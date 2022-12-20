@@ -28,7 +28,8 @@ FROM dbo.Annonymized_Data_Clocking
 
 
 
-WHERE absence_type <> 'Absent' AND Employee_ID = 284 --  Filter to exclude all Absence_Type 'Absent' this is the duplicate row that makes it difficult to calculate attendance 
+WHERE absence_type <> 'Absent' AND Employee_ID = 284 
+--  Filter to exclude all Absence_Type 'Absent' this is the duplicate row that makes it difficult to calculate attendance 
 
 GROUP BY Employee_id, date,department_name, absence_type, hours
 ~~~
@@ -69,7 +70,8 @@ FROM dbo.Annonymized_Data_Clocking
 
 
 
-WHERE absence_type <> 'Absent' AND Employee_ID = 284  --  Filter to exclude all Absence_Type 'Absent' this is the duplicate row that makes it difficult to calculate attendance 
+WHERE absence_type <> 'Absent' AND Employee_ID = 284 
+--  Filter to exclude all Absence_Type 'Absent' this is the duplicate row that makes it difficult to calculate attendance 
 
 GROUP BY Employee_id, date,department_name, absence_type, hours) AS s -- Alias subquery
 GROUP BY s.employee_id, s.date,s.month,s.department_name, s.absence, s.excused, s.unexcused, s.absence_type,s.Day_type,s.SchoolDays
@@ -108,7 +110,8 @@ FROM dbo.Annonymized_Data_Clocking
 
 
 
-WHERE absence_type <> 'Absent' AND Employee_ID = 284  --  Filter to exclude all Absence_Type 'Absent' this is the duplicate row that makes it difficult to calculate attendance 
+WHERE absence_type <> 'Absent' AND Employee_ID = 284 
+--  Filter to exclude all Absence_Type 'Absent' this is the duplicate row that makes it difficult to calculate attendance 
 
 GROUP BY Employee_id, date,department_name, absence_type, hours) AS s -- Alias subquery
 GROUP BY s.employee_id, s.date,s.month,s.department_name, s.absence, s.excused, s.unexcused, s.absence_type,s.Day_type,s.SchoolDays)
@@ -142,7 +145,8 @@ FROM dbo.Annonymized_Data_Clocking
 
 
 
-WHERE absence_type <> 'Absent' AND Employee_ID = 284 --  Filter to exclude all Absence_Type 'Absent' this is the duplicate row that makes it difficult to calculate attendance 
+WHERE absence_type <> 'Absent' AND Employee_ID = 284
+--  Filter to exclude all Absence_Type 'Absent' this is the duplicate row that makes it difficult to calculate attendance 
 
 GROUP BY Employee_id, date,department_name, absence_type, hours) AS s -- Alias subquery
 GROUP BY s.employee_id, s.date,s.month,s.department_name, s.absence, s.excused, s.unexcused, s.absence_type,s.Day_type,s.SchoolDays)
