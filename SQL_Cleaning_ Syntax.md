@@ -1,8 +1,6 @@
 ## Step 1: Create a query to return all relevant columns for attendance calculation.
-
-/* Data Cleanining and table creation with month, excused/unexcused absences, half/whole day */
 ~~~SQL
-
+/* Data Cleanining and table creation with month, excused/unexcused absences*/
 SELECT employee_id, date, MONTH(date) AS Month,department_name, absence_type, 
 	/*Count of Excused, Unexcused, and Absences based on IF THEN Formula*/
 	COUNT(CASE WHEN Absence_Type IN ('Holiday','Personal','Vacation','Personal_(Longevity)', 'Professional_Development', 'Administrative_Leave','Bereavement', 'Religious_Observation', 'Sick', 'Covid_Sick') THEN 'Excused' END) AS Excused,
@@ -29,7 +27,8 @@ GROUP BY Employee_id, date,department_name, absence_type, hours
 
 ~~~SQL 
 
-SELECT s.employee_id, s.date,s.month,s.SchoolDays,s.department_name, s.absence, s.excused, s.unexcused, s.absence_type, (s.unexcused + s.absence) - s.excused AS true_absence
+SELECT s.employee_id, s.date,s.month,s.SchoolDays,s.department_name, s.absence, s.excused, s.unexcused, s.absence_type, 
+(s.unexcused + s.absence) - s.excused AS true_absence
 FROM (
 
 SELECT employee_id, date, MONTH(date) AS Month,department_name, absence_type, 
