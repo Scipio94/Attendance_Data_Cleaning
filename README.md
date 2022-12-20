@@ -6,7 +6,7 @@ One of my most recent projects was to calculate attedance percentages of the emp
 
 ## Variables
 
-There are several variables in the dataset that had an effect on the outcome of the calculation of an employee's attendance percentage
+There are several variables withiin the original dataset that had an effect on the outcome of the calculation of an employee's attendance percentage
 
 - **Employee ID**: Employee's identification number
 - **Department Name**: The department that employee works in
