@@ -25,6 +25,8 @@ There are several variables withiin the original dataset that had an effect on t
 
 ## SQL Syntax
 
+### **Step 1: Creation of TEMP TABLE with 'clean' data**
+
 ~~~ SQL 
 /*Temp Table Creation to perfrom mulitple queries*/
 CREATE TEMP TABLE t1 AS -- Creation of TEMP TABLE 
@@ -59,7 +61,11 @@ SELECT
  FROM `my-data-project-36654.FA_Attendance_Data.Attendance_Data`
  WHERE Hours <> 8.75 AND Employee_Name <> 'ADMIN FA' AND  Employee_Name <> 'Academic Support' -- Filtering out the duplicate absence and irrelevant names 
  GROUP BY employee_name, Employee_ID,Absence_Type, department_name, Month, School_Days, Hours ;
+ ~~~
 
+### **Step 2: Calculating Individual Attendance from TEMP TABLE *t1***
+
+~~~ SQL 
 /*Individual Attendance*/
 
 SELECT
@@ -84,6 +90,7 @@ FROM
  
  - Access Query Result [HERE](https://docs.google.com/spreadsheets/d/1U5GqATls_c4WY5Mx42XwnBHyf1W50P02Hv8wW_Of9Zs/edit?usp=sharing) - Indivdual Attendance
 
+### **Step 3: Calculating Campus Attendance from TEMP TABLE *t1***
 ~~~ SQL 
 /*Campus Attendance*/
 
@@ -115,6 +122,7 @@ FROM
  
 - Access Query Result [HERE](https://docs.google.com/spreadsheets/d/1U5GqATls_c4WY5Mx42XwnBHyf1W50P02Hv8wW_Of9Zs/edit?usp=sharing)  - Campus Attendance
 
+### **Step 4: Calculating Weighted Average of Individual Attendance from TEMP TABLE *t1*** 
 
 ~~~ SQL
 
