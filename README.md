@@ -12,7 +12,7 @@ An organinzation's attendance tracking software produces duplicates and needs to
 
 ## Variables
 
-There are several variables withiin the original dataset that had an effect on the outcome of the calculation of an employee's attendance percentage
+There are several variables within the original dataset that had an effect on the outcome of the calculation of an employee's attendance percentage
 
 - **Employee_Name**: Employee name
 - **Employee ID**: Employee's identification number
