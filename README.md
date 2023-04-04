@@ -88,7 +88,7 @@ FROM
  ORDER BY sub.Employee_name, sub.Month;
  ~~~
  
- - Access Query Result [HERE](https://docs.google.com/spreadsheets/d/1U5GqATls_c4WY5Mx42XwnBHyf1W50P02Hv8wW_Of9Zs/edit?usp=sharing) - Indivdual Attendance
+ - Access Query Result [HERE](https://docs.google.com/spreadsheets/d/1oyj43AGT2smaDe5n_e-IrJa0Z1PcC51Ic98w6yyuorM/edit?usp=sharing) - Indivdual Attendance
 
 ### **Step 3: Calculating Campus Attendance from TEMP TABLE *t1***
 ~~~ SQL 
@@ -120,7 +120,7 @@ FROM
  
  ~~~
  
-- Access Query Result [HERE](https://docs.google.com/spreadsheets/d/1U5GqATls_c4WY5Mx42XwnBHyf1W50P02Hv8wW_Of9Zs/edit?usp=sharing)  - Campus Attendance
+- Access Query Result [HERE](https://docs.google.com/spreadsheets/d/1oyj43AGT2smaDe5n_e-IrJa0Z1PcC51Ic98w6yyuorM/edit?usp=sharing)  - Campus Attendance
 
 ### **Step 4: Calculating Weighted Average of Individual Attendance from TEMP TABLE *t1*** 
 
@@ -152,6 +152,6 @@ FROM
  ORDER BY sub1.Employee_name, sub1.Campus
  
  ~~~
- - Access Query Results [HERE](https://docs.google.com/spreadsheets/d/1U5GqATls_c4WY5Mx42XwnBHyf1W50P02Hv8wW_Of9Zs/edit?usp=sharing) - Weighted Average
+ - Access Query Results [HERE](https://docs.google.com/spreadsheets/d/1oyj43AGT2smaDe5n_e-IrJa0Z1PcC51Ic98w6yyuorM/edit?usp=sharing) - Weighted Average
  
  
